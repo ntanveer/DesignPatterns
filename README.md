@@ -147,7 +147,8 @@ var Mazda = (function(_super) {
 var mazda = new Mazda();
 ```
 ## Builder
-The builder pattern helps in reducing the exponential list of constructors and remove this anti-pattern. Instead of using multiple constructors, a builder receives each initialization parameter step by step and then returns the resulting constructed object at once.
+The builder pattern helps in reducing the exponential list of constructors and remove this anti-pattern. Instead of using multiple constructors, a builder receives each initialization parameter step by step and then returns the resulting constructed object at once. 
+The Builder and Abstract Factory patterns are similar in that they both look at construction at an abstract level. However, the Builder pattern is concerned with how a single object is made upby the different factories, whereas the Abstract Factory pattern is concerned with what products are made. The Builder pattern abstracts the algorithm for construction by including the concept of a director. The director is responsible for itemizing the steps and calls on builders to fulfill them. Directors do not have to conform to an interface.
 
 **C#**
 ```c#
