@@ -41,7 +41,7 @@
 ## Abstract
 Abstract factory pattern is useful when creating objects which have a common iterface. It will facilitate the creation of related or dependent objects.
 **C#**
-'''
+'''c#
 interface IDumb
 {
     string Name();
@@ -50,9 +50,7 @@ interface ISmart
 {
     string Name();
 }
-'''
 
-'''
 class Asha : IDumb
 {
     public string Name()
@@ -76,33 +74,26 @@ class GalaxyS2 : ISmart
         return "GalaxyS2";
     }
 }
-'''
 
-'''
 interface IPhoneFactory
 {
     ISmart GetSmart();
     IDumb GetDumb();
 }
-'''
 
-'''
 class NokiaFactory : IPhoneFactory
 {
     public ISmart GetSmart()
     {
         return new Lumia();
     }
-
+    
     public IDumb GetDumb()
     {
         return new Asha();
     }
 }
 
-'''
-
-'''
 switch (phoneType)
         {
             case MANUFACTURERS.SAMSUNG:
