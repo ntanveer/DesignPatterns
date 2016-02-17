@@ -39,6 +39,39 @@
 ## Concurrency
 
 ## Abstract
+**C#**
+**JavaScript**
 ```js
-var objectName = {};
+var __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { 
+    for (var key in parent) { 
+      if (__hasProp.call(parent, key)) 
+        child[key] = parent[key]; 
+    } 
+    function ctor() { 
+    this.constructor = child; 
+    } 
+    ctor.prototype = parent.prototype; 
+    child.prototype = new ctor(); 
+    child.__super__ = parent.prototype; 
+    return child; 
+  };
+
+var Fruit = (function() {
+  function Fruit() {
+    console.log("New fruit");
+  }
+  return Fruit;
+})();
+
+var Apple = (function(_super) {
+  __extends(Apple, _super);
+  function Apple() {
+    console.log("New apple");
+    Apple.__super__.constructor.apply(this, arguments);
+  }
+  return Apple;
+})(Fruit);
+
+var apple = new Apple();
 ```
