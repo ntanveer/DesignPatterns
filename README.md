@@ -42,67 +42,72 @@
 Abstract factory pattern is useful when creating objects which have a common iterface. It will facilitate the creation of related or dependent objects.
 **C#**
 ```c#
-interface IDumb
+interface ILuxury
 {
     string Name();
 }
-interface ISmart
+interface ISports
 {
     string Name();
 }
 
-class Asha : IDumb
+class Lexus : ILuxury
 {
     public string Name()
     {
-        return "Asha";
+        return "Lexus";
     }
 }
 
-class Lumia : ISmart
+class Ferrari : ISports
 {
     public string Name()
     {
-        return "Lumia";
+        return "Ferrari";
     }
 }
 
-class GalaxyS2 : ISmart
+interface ICarFactory
 {
-    public string Name()
-    {
-        return "GalaxyS2";
-    }
+    ILuxury GetLuxury();
+    ISports GetSports();
 }
 
-interface IPhoneFactory
+class FerrariFactory : ICarFactory
 {
-    ISmart GetSmart();
-    IDumb GetDumb();
-}
-
-class NokiaFactory : IPhoneFactory
-{
-    public ISmart GetSmart()
+    public ILuxury GetLuxury()
     {
-        return new Lumia();
+        throw new Exception("Cannot Make Luxury...");
     }
     
-    public IDumb GetDumb()
+    public ISports GetSports()
     {
-        return new Asha();
+        return new Ferrari();
     }
 }
 
-switch (phoneType)
-        {
-            case MANUFACTURERS.SAMSUNG:
-                factory = new SamsungFactory();
-                break;
-            case MANUFACTURERS.NOKIA:
-                factory = new NokiaFactory();
-                break;
-        }
+class MazdaFactory : ICarFactory
+{
+    public ILuxury GetLuxury()
+    {
+        return new Mazda();
+    }
+    
+    public ISports GetSports()
+    {
+        throw new Exception("Cannot Make Sports...");
+    }
+}
+
+switch (cars)
+{
+    case MANUFACTURERS.FERRARI:
+        factory = new FerrariFactory();
+        break;
+    case MANUFACTURERS.MAZDA:
+        factory = new MazdaFactory();
+        break;
+}
 ```
 
 **JavaScript**
