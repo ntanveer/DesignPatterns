@@ -128,21 +128,21 @@ var __hasProp = {}.hasOwnProperty,
     return child; 
   };
 
-var Fruit = (function() {
-  function Fruit() {
-    console.log("New fruit");
+var Car = (function() {
+  function Car() {
+    console.log("New Car");
   }
   return Fruit;
 })();
 
-var Apple = (function(_super) {
-  __extends(Apple, _super);
-  function Apple() {
-    console.log("New apple");
+var Mazda = (function(_super) {
+  __extends(Mazda, _super);
+  function Mazda() {
+    console.log("New Mazda");
     Apple.__super__.constructor.apply(this, arguments);
   }
-  return Apple;
-})(Fruit);
+  return Mazda;
+})(Car);
 
-var apple = new Apple();
+var mazda = new Mazda();
 ```
