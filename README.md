@@ -39,3 +39,6 @@
 ## Concurrency
 
 ## Abstract
+```js
+var objectName = {};
+```
