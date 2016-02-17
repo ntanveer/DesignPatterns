@@ -223,6 +223,10 @@ ctor.prototype.setWheels = function (wheels) {
     this.wheels = wheels;
 };
 
+ctor.prototype.getResults = function() {
+    return this;
+};
+
 return ctor;
     
 function Director() {
