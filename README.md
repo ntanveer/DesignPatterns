@@ -50,7 +50,9 @@ interface ISmart
 {
     string Name();
 }
+'''
 
+'''
 class Asha : IDumb
 {
     public string Name()
@@ -74,13 +76,17 @@ class GalaxyS2 : ISmart
         return "GalaxyS2";
     }
 }
+'''
 
+'''
 interface IPhoneFactory
 {
     ISmart GetSmart();
     IDumb GetDumb();
 }
+'''
 
+'''
 class NokiaFactory : IPhoneFactory
 {
     public ISmart GetSmart()
@@ -94,6 +100,9 @@ class NokiaFactory : IPhoneFactory
     }
 }
 
+'''
+
+'''
 switch (phoneType)
         {
             case MANUFACTURERS.SAMSUNG:
@@ -104,6 +113,7 @@ switch (phoneType)
                 break;
         }
 '''
+
 **JavaScript**
 There is no concept of classes or inheritance in JavaScript as such. This pattern can be replicated by using functions and extended objects.
 ```js
