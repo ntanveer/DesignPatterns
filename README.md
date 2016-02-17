@@ -2,7 +2,7 @@
 
 ## Creational
 
-- [Abstract Factory](#Abstract)
+- [Abstract Factory](#abstract)
 - Builder
 - Factory Method
 - Object Pool
@@ -38,4 +38,4 @@
 
 ## Concurrency
 
-##Abstract
+## Abstract
