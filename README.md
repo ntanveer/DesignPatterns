@@ -210,4 +210,33 @@ public class CarBuildDirector
 ```
 **JS**
 ```js
+var carBuilder = function() {
+    this.colour = 'red';
+    this.wheels = 4;
+};
+
+ctor.prototype.setColour = function (colour) {
+    this.colour = colour;
+};
+
+ctor.prototype.setWheels = function (wheels) {
+    this.wheels = wheels;
+};
+
+return ctor;
+    
+function Director() {
+    this.assembleCar = function(builder) {
+        var car = builder.getResults;
+        
+        return {
+            car: car
+        }
+    }
+}
+  
+var director = new Director(),
+    carBuilder = new carBuilder();
+
+director.assembleCar(carBuilder);
 ```
