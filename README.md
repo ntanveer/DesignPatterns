@@ -3,7 +3,7 @@
 ## Creational
 
 - [Abstract Factory](#abstract)
-- Builder
+- [Builder](#builder)
 - Factory Method
 - Object Pool
 - Prototype
@@ -39,7 +39,7 @@
 ## Concurrency
 
 ## Abstract
-Abstract factory pattern is useful when creating objects which have a common iterface. It will facilitate the creation of related or dependent objects.
+Abstract factory pattern is useful when creating objects which have a common iterface. It will facilitate the creation of related or dependent objects and facilitate polymorphism.
 **C#**
 ```c#
 interface ILuxury
@@ -145,4 +145,13 @@ var Mazda = (function(_super) {
 })(Car);
 
 var mazda = new Mazda();
+```
+## Builder
+The builder pattern helps in reducing the exponential list of constructors and remove this anti-pattern. Instead of using multiple constructors, a builder receives each initialization parameter step by step and then returns the resulting constructed object at once.
+
+**C#**
+```c#
+```
+**JS**
+```js
 ```
