@@ -1,8 +1,8 @@
-# DesignPatterns - C# and JavaScript
+# DesignPatterns in C# and JavaScript
 
 ## Creational
 
-- Abstract Factory
+- [Abstract Factory]
 - Builder
 - Factory Method
 - Object Pool
@@ -37,3 +37,5 @@
 - Monad Pattern / Promises
 
 ## Concurrency
+
+##Abstract
