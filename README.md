@@ -41,7 +41,7 @@
 ## Abstract
 Abstract factory pattern is useful when creating objects which have a common iterface. It will facilitate the creation of related or dependent objects.
 **C#**
-'''c#
+```c#
 interface IDumb
 {
     string Name();
@@ -103,7 +103,7 @@ switch (phoneType)
                 factory = new NokiaFactory();
                 break;
         }
-'''
+```
 
 **JavaScript**
 There is no concept of classes or inheritance in JavaScript as such. This pattern can be replicated by using functions and extended objects.
