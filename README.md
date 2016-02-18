@@ -42,6 +42,7 @@
 
 ## Abstract
 Abstract factory pattern is useful when creating objects which have a common iterface. It will facilitate the creation of related or dependent objects and facilitate polymorphism.
+
 **C#**
 ```c#
 interface ILuxury
@@ -249,7 +250,9 @@ director.assembleCar(carBuilder);
 
 ## Factory
 Factory pattern encapsualtes the object instantiation logic for objects with common interface.
+
 **C#**
+
 ```c#
 public interface IPeople
 {
