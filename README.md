@@ -249,7 +249,7 @@ director.assembleCar(carBuilder);
 ```
 
 ## Factory
-Factory pattern encapsualtes the object instantiation logic for objects with common interface.
+Factory pattern encapsualtes the object instantiation logic for objects with common interface. It differs from other creational patterns becuase it does not explicity require a constructor. A factory provices generic interface to create objects based on the type of factory object.
 
 **C#**
 
@@ -299,4 +299,60 @@ public class Factory
         }
     }
 }
+```
+**JavaScript**
+
+```js
+
+ 
+function Car(options) {
+  this.doors = options.doors || 4;
+  this.color = options.color || "silver";
+}
+ 
+function Truck(options){
+  this.wheelSize = options.wheelSize || "large";
+  this.color = options.color || "blue";
+}
+ 
+ 
+function VehicleFactory() {}
+VehicleFactory.prototype.vehicleClass = Car;
+VehicleFactory.prototype.createVehicle = function ( options ) {
+  switch(options.vehicleType){
+    case "car":
+      this.vehicleClass = Car;
+      break;
+    case "truck":
+      this.vehicleClass = Truck;
+      break;
+  }
+  return new this.vehicleClass( options );
+};
+ 
+var carFactory = new VehicleFactory();
+var car = carFactory.createVehicle( {
+            vehicleType: "car",
+            color: "yellow",
+            doors: 6 } );
+ 
+// Outputs: true
+console.log( car instanceof Car );
+ 
+// Outputs: Car object of color "yellow", doors: 6 in a "brand new" state
+console.log( car );
+
+var movingTruck = carFactory.createVehicle( {
+                      vehicleType: "truck",
+                      state: "like new",
+                      color: "red",
+                      wheelSize: "small" } );
+ 
+// Outputs: true
+console.log( movingTruck instanceof Truck );
+ 
+// Outputs: Truck object of color "red", a "like new" state
+// and a "small" wheelSize
+console.log( movingTruck );
+
 ```
