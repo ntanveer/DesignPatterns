@@ -1,5 +1,7 @@
 # DesignPatterns in C# and JavaScript
 
+### By Nasmi Sabeer & Nabeel Tanveer
+
 ## Creational
 
 - [Abstract Factory](#abstract)
