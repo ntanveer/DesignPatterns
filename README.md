@@ -1,4 +1,4 @@
-# DesignPatterns in C# and JavaScript
+# Design Patterns in C# and JavaScript
 
 ### By Nasmi Sabeer & Nabeel Tanveer
 
@@ -6,7 +6,7 @@
 
 - [Abstract Factory](#abstract)
 - [Builder](#builder)
-- Factory Method
+- [Factory Method](#factory)
 - Object Pool
 - Prototype
 - Singleton
@@ -245,4 +245,11 @@ var director = new Director(),
     carBuilder = new carBuilder();
 
 director.assembleCar(carBuilder);
+```
+
+## Factory
+ccc
+**C#**
+```c#
+
 ```
