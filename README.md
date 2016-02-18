@@ -344,14 +344,13 @@ console.log( car );
 
 var movingTruck = carFactory.createVehicle( {
                       vehicleType: "truck",
-                      state: "like new",
                       color: "red",
                       wheelSize: "small" } );
  
 // Outputs: true
 console.log( movingTruck instanceof Truck );
  
-// Outputs: Truck object of color "red", a "like new" state
+// Outputs: Truck object of color "red"
 // and a "small" wheelSize
 console.log( movingTruck );
 
