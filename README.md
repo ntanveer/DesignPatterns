@@ -42,7 +42,7 @@
 
 ## Abstract
 Abstract factory pattern is useful when creating objects which have a common iterface. It will facilitate the creation of related or dependent objects and facilitate polymorphism.
-=== C# ===
+**C#**
 ```c#
 interface ILuxury
 {
@@ -248,8 +248,52 @@ director.assembleCar(carBuilder);
 ```
 
 ## Factory
-ccc
+Factory pattern encapsualtes the object instantiation logic for objects with common interface.
 **C#**
 ```c#
+public interface IPeople
+{
+    string GetName();
+}
 
+public class Villagers : IPeople
+{
+    public string GetName()
+    {
+        return "Village Person";
+    }
+}
+
+public class CityPeople : IPeople
+{
+    public string GetName()
+    {
+        return "City Person";
+    }
+}
+
+public enum PeopleType
+{
+    Rural,
+    Urban
+}
+
+/// <summary>
+/// Implementation of Factory - Used to create objects
+/// </summary>
+public class Factory
+{
+    public IPeople GetPeople(PeopleType type)
+    {
+        switch (type)
+        {
+            case PeopleType.Rural:
+                return new Villagers();
+            case PeopleType.Urban:
+                return new CityPeople();
+            default:
+                throw new NotSupportedException()
+        }
+    }
+}
 ```
