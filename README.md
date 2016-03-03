@@ -6,7 +6,7 @@
 - [Builder](#builder)
 - [Factory Method](#factory)
 - Object Pool
-- Prototype
+- [Prototype](#prototype)
 - Singleton
 
 ## Structural
@@ -350,6 +350,64 @@ console.log( movingTruck instanceof Truck );
 // Outputs: Truck object of color "red"
 // and a "small" wheelSize
 console.log( movingTruck );
+
+```
+
+
+## Prototype
+The Prototype pattern creates clones of an object based on a templated object. The prototype object itself is used as a reference for each object the constructor creates. This pattern does offer some performance boost as it referes to the same function in every instance of the object.
+**C#**
+```c#
+ public abstract class CarPrototype
+    {
+        // normal implementation
+        public abstract CarPrototype Clone();
+    }
+
+    public class ConcreateCar : CarPrototype
+    {
+        public override CarPrototype Clone()
+        {
+            return (CarPrototype)this.MemberwiseClone();
+        }
+    }
+    
+    public class ConcreateCar2 : CarPrototype
+    {
+        public override CarPrototype Clone()
+        {
+            return (CarPrototype)this.MemberwiseClone();
+        }
+    }
+```
+
+**JavaScript**
+One of the benefits of using this pattern is that JavaScript natively offers prototypical features. This is not the case when implementing other design patterns in JavaScript.
+```js
+var carPrototype = {
+ 
+  init: function (carModel) {
+    this.model = carModel;
+  },
+ 
+  getModel: function () {
+    console.log('Car model is ', this.model);
+  }
+};
+
+var car = (function () {
+ 
+    function carFunction() {}
+ 
+    return function (proto) {
+        carFunction.prototype = proto;
+        return new carFunction();
+    };
+    
+})();
+
+var myCar = car("Ferrari F50");
+myCar.getModel();
 
 ```
 
