@@ -383,6 +383,7 @@ The Prototype pattern creates clones of an object based on a templated object. T
 ```
 
 **JavaScript**
+
 One of the benefits of using this pattern is that JavaScript natively offers prototypical features. This is not the case when implementing other design patterns in JavaScript.
 ```js
 var carPrototype = {
