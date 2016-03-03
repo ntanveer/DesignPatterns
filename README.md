@@ -1,7 +1,5 @@
 # Design Patterns in C# and JavaScript
 
-### By Nasmi Sabeer & Nabeel Tanveer
-
 ## Creational
 
 - [Abstract Factory](#abstract)
@@ -28,7 +26,7 @@
 - Command
 - Interpreter
 - Iterator
-- Mediator
+- [Mediator](#mediator)
 - Memento
 - Null Object
 - Observer
@@ -304,7 +302,6 @@ public class Factory
 
 ```js
 
- 
 function Car(options) {
   this.doors = options.doors || 4;
   this.color = options.color || "silver";
@@ -355,3 +352,165 @@ console.log( movingTruck instanceof Truck );
 console.log( movingTruck );
 
 ```
+
+## Mediator
+Define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
+Reduces the communication relationship from "many-to-many" to "many-to-one"
+Helps us pinpoint dependencies
+Excellent at decoupling objects which often promotes smaller, reusable components
+Beware that
+Introduces a single point of failure
+When modules communicate back and forth using a mediator pattern, it tends to become cumbersome and usually results in a clear performance hit. It's best when the mediator is only used to coordinate actions across multiple features and not for communication within the individual features themselves; keep the airways clean!
+**C#**
+```c#
+class Program
+{
+    static void Main(string[] args)
+    {
+        //list of participants
+        IColleague<string> colleagueA = new ConcreteColleague<string>("ColleagueA");
+        IColleague<string> colleagueB = new ConcreteColleague<string>("ColleagueB");
+        IColleague<string> colleagueC = new ConcreteColleague<string>("ColleagueC");
+        IColleague<string> colleagueD = new ConcreteColleague<string>("ColleagueD");
+
+        //first mediator
+        IMediator<string> mediator1 = new ConcreteMediator<string>();
+        //participants registers to the mediator
+        mediator1.Register(colleagueA);
+        mediator1.Register(colleagueB);
+        mediator1.Register(colleagueC);
+        //participantA sends out a message
+        colleagueA.SendMessage(mediator1, "MessageX from ColleagueA");
+
+        //second mediator
+        IMediator<string> mediator2 = new ConcreteMediator<string>();
+        //participants registers to the mediator
+        mediator2.Register(colleagueB);
+        mediator2.Register(colleagueD);
+        //participantB sends out a message
+        colleagueB.SendMessage(mediator2, "MessageY from ColleagueB");
+    }
+}
+
+public interface IColleague<t>
+{
+    void SendMessage(IMediator<t> mediator, T message);
+
+    void ReceiveMessage(T message);
+}
+
+public class ConcreteColleague<t> : IColleague<t>
+{
+    private string name;
+
+    public ConcreteColleague(string name)
+    {
+        this.name = name;
+    }
+
+    void IColleague<t>.SendMessage(IMediator<t> mediator, T message)
+    {
+        mediator.DistributeMessage(this, message);
+    }
+
+    void IColleague<t>.ReceiveMessage(T message)
+    {
+        Console.WriteLine(this.name + " received " + message.ToString());
+    }
+}
+
+
+public interface IMediator<t>
+{
+    List<icolleague><t>> ColleagueList { get; }
+
+    void DistributeMessage(IColleague<t> sender, T message);
+
+    void Register(IColleague<t> colleague);
+}
+
+
+public class ConcreteMediator<t> : IMediator<t>
+{
+    private List<icolleague><t>> colleagueList = new List<icolleague><t>>();
+
+    List<icolleague><t>> IMediator<t>.ColleagueList
+    {
+        get { return colleagueList; }
+    }
+
+    void IMediator<t>.Register(IColleague<t> colleague)
+    {
+        colleagueList.Add(colleague);
+    }
+
+    void IMediator<t>.DistributeMessage(IColleague<t> sender, T message)
+    {
+        foreach (IColleague<t> c in colleagueList)
+            if (c != sender)    //don't need to send message to sender
+                c.ReceiveMessage(message);
+    }
+}
+```
+**JavaScript**
+```js
+
+var Mediator = ( function( window, undefined ) {
+
+	function Mediator() {
+		this._topics = {};
+	}
+
+	Mediator.prototype.subscribe = function mediatorSubscribe( topic, callback ) {
+		if( ! this._topics.hasOwnProperty( topic ) ) {
+			this._topics[ topic ] = [];
+		}
+
+		this._topics[ topic ].push( callback );
+		return true;
+	};
+
+	Mediator.prototype.unsubscribe = function mediatorUnsubscrive( topic, callback ) {
+		if( ! this._topics.hasOwnProperty( topic ) ) {
+			return false;
+		}
+
+		for( var i = 0, len = this._topics[ topic ].length; i < len; i++ ) {
+			if( this._topics[ topic ][ i ] === callback ) {
+				this._topics[ topic ].splice( i, 1 );
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	Mediator.prototype.publish = function mediatorPublish() {
+		var args = Array.prototype.slice.call( arguments );
+		var topic = args.shift();
+
+		if( ! this._topics.hasOwnProperty( topic ) ) {
+			return false;
+		}
+
+		for( var i = 0, len = this._topics[ topic ].length; i < len; i++ ) {
+			this._topics[ topic ][ i ].apply( undefined, args );
+		}
+		return true;
+	};
+
+	return Mediator;
+
+} )( window );
+
+// example subscriber function
+var Subscriber = function ExampleSubscriber( myVariable ) {
+  console.log( myVariable );
+};
+
+// example usages
+var myMediator = new Mediator();
+myMediator.subscribe( 'some event', Subscriber );
+myMediator.publish( 'some event', 'foo bar' ); // console logs "foo bar"
+```
+
