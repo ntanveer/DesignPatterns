@@ -1,4 +1,4 @@
-# Design Patterns in C# and JavaScript
+# A guide to using Design Patterns in C# and JavaScript
 
 ## Creational
 
@@ -354,14 +354,10 @@ console.log( movingTruck );
 ```
 
 ## Mediator
-Define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently.
-Reduces the communication relationship from "many-to-many" to "many-to-one"
-Helps us pinpoint dependencies
-Excellent at decoupling objects which often promotes smaller, reusable components
-Beware that
-Introduces a single point of failure
-When modules communicate back and forth using a mediator pattern, it tends to become cumbersome and usually results in a clear performance hit. It's best when the mediator is only used to coordinate actions across multiple features and not for communication within the individual features themselves; keep the airways clean!
-**C#**
+Mediator pattern is used to avoid explicitly referring same object and recuding communication from "many-to-many" to "many-to-one". It can be helpful to reconcile differences between values of the object held by different owners. This pattern can be used to pinpoint dependencies and promote decoupled obects with smaller, resuable components.
+The downside of using this pattern is that it can introduce a single point of failure making it difficult to identify the actual problem. Mediators should only be used when communication channel is accross multiple features. If it is used for mediating values within the same feature then the communication back and forth becomes cumbersome and can result in a performance hit.
+
+#### C#
 ```c#
 class Program
 {
