@@ -357,7 +357,7 @@ console.log( movingTruck );
 Mediator pattern is used to avoid explicitly referring same object and recuding communication from "many-to-many" to "many-to-one". It can be helpful to reconcile differences between values of the object held by different owners. This pattern can be used to pinpoint dependencies and promote decoupled obects with smaller, resuable components.
 The downside of using this pattern is that it can introduce a single point of failure making it difficult to identify the actual problem. Mediators should only be used when communication channel is accross multiple features. If it is used for mediating values within the same feature then the communication back and forth becomes cumbersome and can result in a performance hit.
 
-#### C#
+**C#**
 ```c#
 class Program
 {
