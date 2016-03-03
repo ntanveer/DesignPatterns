@@ -356,6 +356,7 @@ console.log( movingTruck );
 
 ## Prototype
 The Prototype pattern creates clones of an object based on a templated object. The prototype object itself is used as a reference for each object the constructor creates. This pattern does offer some performance boost as it referes to the same function in every instance of the object.
+
 **C#**
 ```c#
  public abstract class CarPrototype
